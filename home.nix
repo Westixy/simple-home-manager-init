@@ -31,6 +31,7 @@ in
       multiplex
       deluge
       zellij
+      firefox-mobile
     ] ++ lib.optionals hasCurrentTime [
       retroarchFull
       (nixgl.packages.${pkgs.system}.nixGLDefault)
@@ -66,8 +67,8 @@ in
       shellAliases = lib.optionalAttrs hasCurrentTime {
         retroarch = "nixGL retroarch";
       } // {
-        nh-switch = "nh home switch $HOME/.config/home-manager";
-        nh-update = "cd $HOME/.config/home-manager && git stash && git pull --rebase && git stash pop && nh home switch $HOME/.config/home-manager; cd -";
+        nh-switch = "nh home switch $HOME/.config/home-manager -- --impure";
+        nh-update = "cd $HOME/.config/home-manager && git stash && git pull --rebase && git stash pop && nh home switch $HOME/.config/home-manager -- --impure; cd -";
         nh-edit = "code $HOME/.config/home-manager";
       };
     };
