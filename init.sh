@@ -6,7 +6,7 @@ nix-env --version > /dev/null \
 
 # set experminetal features
 [ -d "/etc/nix" ] || sudo mkdir -p "/etc/nix"
-fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF
+fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF > "/etc/nix/nix.conf"
 experimental-features = nix-command flakes
 EOF
 
@@ -20,4 +20,4 @@ sed -i "s/auberge/$USER/g" "$HOME/.config/home-manager/home.nix"
 sed -i "s/auberge/$USER/g" "$HOME/.config/home-manager/flake.nix"
 
 # initialise home manager
-nh home switch "$HOME/.config/home-manager#$USER"
+nh home switch "$HOME/.config/home-manager"
