@@ -31,7 +31,15 @@ in
       multiplex
       deluge
       zellij
-      firefox-mobile
+      firefox
+      (pkgs.runCommand "firefox-mobile" { preferLocalBuild = true; } ''
+        mkdir -p $out/bin
+        ln -s ${pkgs.firefox-mobile}/bin/firefox $out/bin/firefox-mobile
+      '')
+      (pkgs.runCommand "firefox-dev" { preferLocalBuild = true; } ''
+        mkdir -p $out/bin
+        ln -s ${pkgs.firefox-devedition}/bin/firefox $out/bin/firefox-dev
+      '')
     ] ++ lib.optionals hasCurrentTime [
       retroarchFull
       (nixgl.packages.${pkgs.system}.nixGLDefault)
