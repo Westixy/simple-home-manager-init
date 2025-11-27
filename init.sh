@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# install nix
+nix-env --version > /dev/null \
+    || sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon 
+
+# set experminetal features
+[ -d "/etc/nix" ] || sudo mkdir -p "/etc/nix"
+fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF
+experimental-features = nix-command flakes
+EOF
+
+# get config
+[ -d "$HOME/.config/" ] || mkdir -p "$HOME/.config/"
+[ -d "$HOME/.config/home-manager" ] || nix run nixpkgs#git -- \
+    clone https://github.com/Westixy/simple-home-manager-init.git \
+    "$HOME/.config/home-manager"
+
