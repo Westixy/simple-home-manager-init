@@ -67,7 +67,8 @@ in
         retroarch = "nixGL retroarch";
       } // {
         nh-switch = "nh home switch $HOME/.config/home-manager";
-        nh-update = "cd $HOME/.config/home-manager && git stash && git pull && git stash pop && nh home switch $HOME/.config/home-manager; cd -";
+        nh-update = "cd $HOME/.config/home-manager && git stash && git pull --rebase && git stash pop && nh home switch $HOME/.config/home-manager; cd -";
+        nh-edit = "code $HOME/.config/home-manager";
       };
     };
   };
