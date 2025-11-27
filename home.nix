@@ -27,7 +27,7 @@ in
     packages = with pkgs; [
       direnv
       nh
-      vscode
+      codium
       multiplex
       deluge
       zellij
