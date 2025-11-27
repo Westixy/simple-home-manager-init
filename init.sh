@@ -2,11 +2,12 @@
 
 # install nix
 nix-env --version > /dev/null \
-    || sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon 
+    || curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install \
+    | sh --daemon 
 
 # set experminetal features
 [ -d "/etc/nix" ] || sudo mkdir -p "/etc/nix"
-fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF > "/etc/nix/nix.conf"
+fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF | sudo tee -a "/etc/nix/nix.conf"
 experimental-features = nix-command flakes
 EOF
 
