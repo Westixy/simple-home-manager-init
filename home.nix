@@ -29,6 +29,8 @@ in
       nh
       retroarchFull
       vscode
+      multiplex
+      deluge
       zellij
     ] ++ lib.optionals hasCurrentTime [
       (nixgl.packages.${pkgs.system}.nixGLDefault)
