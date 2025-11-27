@@ -27,12 +27,12 @@ in
     packages = with pkgs; [
       direnv
       nh
-      retroarchFull
       vscode
       multiplex
       deluge
       zellij
     ] ++ lib.optionals hasCurrentTime [
+      retroarchFull
       (nixgl.packages.${pkgs.system}.nixGLDefault)
     ];
 

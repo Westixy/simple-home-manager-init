@@ -16,3 +16,8 @@ EOF
     clone https://github.com/Westixy/simple-home-manager-init.git \
     "$HOME/.config/home-manager"
 
+sed -i "s/auberge/$USER/g" "$HOME/.config/home-manager/home.nix"
+sed -i "s/auberge/$USER/g" "$HOME/.config/home-manager/flake.nix"
+
+# initialise home manager
+nh home switch "$HOME/.config/home-manager#$USER"
