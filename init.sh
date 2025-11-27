@@ -7,7 +7,7 @@ nix-env --version > /dev/null \
 
 # set experminetal features
 [ -d "/etc/nix" ] || sudo mkdir -p "/etc/nix"
-fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF | sudo tee -a "/etc/nix/nix.conf"
+sudo fgrep experimental-features "/etc/nix/nix.conf" 2> /dev/null  || cat <<EOF | sudo tee -a "/etc/nix/nix.conf"
 experimental-features = nix-command flakes
 EOF
 
