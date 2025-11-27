@@ -47,7 +47,7 @@ in
 
     # Environment variables for shells managed by Home Manager.
     sessionVariables = {
-      # EDITOR = "emacs";
+      EDITOR = "code";
     };
   };
 
@@ -65,6 +65,9 @@ in
       enable = true;
       shellAliases = lib.optionalAttrs hasCurrentTime {
         retroarch = "nixGL retroarch";
+      } // {
+        nh-switch = "nh home switch $HOME/.config/home-manager";
+        nh-update = "cd $HOME/.config/home-manager && git stash && git pull && git stash pop && nh home switch $HOME/.config/home-manager; cd -";
       };
     };
   };
