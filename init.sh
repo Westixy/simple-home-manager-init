@@ -21,4 +21,4 @@ sed -i "s/auberge/$USER/g" "$HOME/.config/home-manager/home.nix"
 sed -i "s/auberge/$USER/g" "$HOME/.config/home-manager/flake.nix"
 
 # initialise home manager
-nh home switch "$HOME/.config/home-manager"
+nix run nixpkgs#nh -- home switch "$HOME/.config/home-manager"
