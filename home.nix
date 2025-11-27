@@ -27,7 +27,7 @@ in
     packages = with pkgs; [
       direnv
       nh
-      codium
+      vscodium
       multiplex
       deluge
       zellij
