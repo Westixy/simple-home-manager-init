@@ -3,7 +3,7 @@
 # install nix
 nix-env --version > /dev/null \
     || curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install \
-    | sh --daemon 
+    | sh /dev/stdin --daemon 
 
 # set experminetal features
 [ -d "/etc/nix" ] || sudo mkdir -p "/etc/nix"
